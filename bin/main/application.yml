@@ -1,0 +1,74 @@
+spring:
+    profiles:
+        active: dev
+    
+---
+
+spring:
+    config:
+        activate:
+            on-profile: qa
+    datasource:
+        password: root
+        url: jdbc:postgresql://localhost:5432/employeedb
+        username: postgres
+    jpa:
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+        show-sql: true
+
+management:
+    endpoints:
+        web:
+            exposure:
+                include: "*"    
+---
+
+spring:
+    config:
+        activate:
+            on-profile: dev
+    datasource:
+        password: root
+        url: jdbc:postgresql://localhost:5432/employeedb-dev
+        username: postgres
+    jpa:
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+        show-sql: true
+        
+management:
+    endpoints:
+        web:
+            exposure:
+                include: "*"      
+---      
+
+
+spring:
+    config:
+        activate:
+            on-profile: prod
+    datasource:
+        password: root
+        url: jdbc:postgresql://localhost:5432/employeedb-prod
+        username: postgres
+    jpa:
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+        show-sql: true
+        
+management:
+    endpoints:
+        web:
+            exposure:
+                include: "*"          
